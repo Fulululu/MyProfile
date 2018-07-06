@@ -115,3 +115,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+export ALTERNATE_EDITOR=""
+export EDITOR="emacsclient -nw"
+export VISUAL="emacsclient -c -a emacs"
