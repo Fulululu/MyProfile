@@ -4,32 +4,35 @@
 
 
 ;;; Code:
-;; 关闭启动帮助画面
+;; hide the startup message
 (setq inhibit-splash-screen t)
 
-;; 关闭工具栏，tool-bar-mode 即为一个 Minor Mode
+;; turn off tool bar
 (tool-bar-mode 0)
+
+;; turn off menu bar
+(menu-bar-mode 0)
 
 ;; Set Full Screen when open emacs
 (setq initial-frame-alist (quote ((fullscreen . maximized))))
 
-;; 关闭文件滑动控件
-(scroll-bar-mode 0)
-
-;; 显示行号
+;; global show linum
 (global-linum-mode t)
 
 ;; Highlight current line
-(global-hl-line-mode t)
+;(global-hl-line-mode t)
 
 ;; Highlight line color
-(set-face-background 'hl-line' "#333333")
+;(set-face-background 'hl-line' "#333333")
 
-;; 更改光标的样式
+;; Modify cursor type
 (setq-default cursor-type 'bar)
 
 ;; Highlight Matching Parentheses
 (show-paren-mode t)
+
+;; Lock when scroll
+;(scroll-lock-mode t)
 
 
 (provide 'init-ui)

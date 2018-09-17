@@ -11,23 +11,27 @@
   )
 (global-set-key (kbd "<f12>") 'open-init-file)
 
-;; short key for swiper
+;; ivy
+(global-set-key (kbd "C-x C-b") 'switch-to-buffer)
+
+;; swiper
 (global-set-key (kbd "C-s") 'swiper)
 (global-set-key (kbd "C-r") 'swiper)
 
-;; short key for yasnippet
-(global-set-key (kbd "C-c y") 'yas-minor-mode)
+;; yasnippet
+(global-set-key (kbd "C-c C-y") 'ivy-yasnippet)
 
-;; shortkey for counsel
+;; counsel
 (global-set-key (kbd "C-h f") 'counsel-describe-function)
 (global-set-key (kbd "C-h v") 'counsel-describe-variable)
 (global-set-key (kbd "C-h k") 'counsel-descbinds)
 (global-set-key (kbd "M-x") 'counsel-M-x)
 (global-set-key (kbd "C-x C-r") 'counsel-recentf)
 
-;; shortkey for ecb
-(global-set-key (kbd "<f11>") 'ecb-minor-mode)
+;; ecb
+;(global-set-key (kbd "<f11>") 'ecb-minor-mode)
 
+;; helm-gtags
 (with-eval-after-load 'helm-gtags
   (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-previous-history)
   (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-next-history)
@@ -37,6 +41,12 @@
 ;; shortkey for projectile
 
 
+;; shortkey for comment/uncomment
+(defun toggle-comment-on-line ()
+  "comment or uncomment current line"
+  (interactive)
+  (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
+(global-set-key (kbd "C-c c") 'toggle-comment-on-line)
 
 (provide 'init-shortkey)
 ;;; init-shortkey.el ends here

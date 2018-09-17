@@ -1,6 +1,6 @@
 My ~/.emacs.d
 ====
-(Based on GNU Emacs 25.1.1)
+(Based on GNU Emacs 26.1.0)
 <br>This repository contain my emacs setting in ~/.emacs.d
 ## Plugins
 - better-defaults

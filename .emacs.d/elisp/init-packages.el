@@ -6,7 +6,8 @@
 (when (>= emacs-major-version 24)
      (require 'package)
      (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
-			      ("melpa" . "http://elpa.emacs-china.org/melpa/"))))
+			      ("melpa" . "http://elpa.emacs-china.org/melpa/")
+			      ("melpa-stable" . "http://elpa.emacs-china.org/melpa-stable/"))))
 ;;elpa.emacs-china.org is a mirror of ELPA
 
 ;; cl - Common Lisp Extension
@@ -21,15 +22,19 @@
 		      swiper
 		      counsel
 		      smartparens
-		      flycheck ;;better than flymake
+		      flycheck ;;flymake
 		      yasnippet
-		      ;;yasnippet-snippets
+		      ivy-yasnippet
+		      yasnippet-snippets
 		      popwin
 		      wn-mode
 		      ;;cscope
 		      ;;ecb
 		      ;;counsel-projectile
                       helm-gtags
+		      elpy
+		      py-autopep8
+		      ;;sublimity
 		      ;;-------denpendency-------
 		      epl
 		      ivy
@@ -54,38 +59,31 @@
        (when (not (package-installed-p pkg))
 	 (package-install pkg))))
 
-;; better-defaults setting
-(require 'better-defaults)
-
 ;; company setting
-(require 'company)
 (global-company-mode t)
 
 ;; company-c-headers setting
-(require 'company-c-headers)
 (add-to-list 'company-backends 'company-c-headers)
 
 ;; hungry-delete setting
-(autoload global-hungry-delete-mode "hungry-delete-autoloads")
 (global-hungry-delete-mode t)
 
 ;; ivy setting
-(autoload ivy-mode "ivy-autoloads")
 (ivy-mode t)
 (setq ivy-use-virtual-buffers t)
 
 ;; smartparens setting
-(require 'smartparens-config)
 (smartparens-global-mode t)
 
 ;; flycheck setting
 (add-hook 'emacs-lisp-mode-hook 'flycheck-mode)
 (add-hook 'c-mode-hook 'flycheck-mode)
 (add-hook 'c++-mode-hook 'flycheck-mode)
+(add-hook 'python-mode 'flycheck-mode)
 
 ;; yasnippet and snippets setting
-;;(autoload 'yas-minor-mode "yasnippet-autoloads")
-;;(add-hook 'c-mode-hook 'yas-minor-mode)
+(add-hook 'c-mode-hook 'yas-minor-mode)
+(add-hook 'python-mode-hook 'yas-minor-mode)
 
 ;; popwin setting
 (require 'popwin)
@@ -100,7 +98,6 @@
 (add-hook 'asm-mode-hook 'helm-gtags-mode)
 
 ;; cscope setting
-;;(require 'xcscope)
 ;;(cscope-setup)
 
 ;; Emacs Codes Browser setting
@@ -109,6 +106,18 @@
 ;;(setq ecb-tip-of-the-day nil)
 ;;(add-hook 'c-mode-hook 'ecb-minor-mode)
 ;;(add-hook 'c++-mode-hook 'ecb-minor-mode)
+
+;; elpy setting
+(add-hook 'python-mode-hook 'elpy-mode)
+(add-hook 'elpy-mode-hook 'flycheck-mode)
+;(defun elpy-use-flycheck()
+;  "my function, it used to replace flymake with flycheck in elpy mode"
+;  (interactive)
+;  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules)))
+;(eval-after-load 'elpy-mode 'elpy-use-flycheck)
+
+;; py-autopep8
+(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
 (provide 'init-packages)
 ;;; init-packages.el ends here

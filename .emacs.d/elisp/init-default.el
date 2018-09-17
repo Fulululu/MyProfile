@@ -4,19 +4,19 @@
 
 
 ;;; Code:
-;; 更改显示字体大小 16pt
+;; Set the font size = 16pt
 ;; http://stackoverflow.com/questions/294664/how-to-set-the-font-size-in-emacs
 (set-face-attribute 'default nil :height 160)
 
 ;; set backup directory
-;;(setq backup-directory-alist (quote (("." . "~/.emacs/backups"))))
-;; 禁止 Emacs 自动生成备份文件
+(setq backup-directory-alist (quote (("." . "~/.emacs/backups"))))
+;; Disable auto make backup file
 ;;(setq make-backup-files nil)
 
 ;; disable auto-save
 ;;(setq auto-save-default nil)
 
-;; 开启最近打开过文件功能
+;; enable recent files record
 (recentf-mode t)
 
 ;; 将删除功能配置成:当你选中一段文字之后输入一个字符会替换掉你选中部分的文字。
@@ -37,7 +37,7 @@
 ;; semantic setting
 (require 'semantic/sb)
 
-;; turn off abbrev mode in c-mode or other-mode
+;; turn off abbrev mode in some mode
 (defun turn-off-abbrev-mode()
   "my function, using in C or other mode to turn off abbrev-mode"
   (interactive)
@@ -45,6 +45,9 @@
 (add-hook 'c-mode-hook 'turn-off-abbrev-mode)
 (add-hook 'c++-mode-hook 'turn-off-abbrev-mode)
 
+;; Tab setting
+(setq c-default-style "linux"
+      c-basic-offset 4)
 
 (provide 'init-default)
 ;;; init-default.el ends here
