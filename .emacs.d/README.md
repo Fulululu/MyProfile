@@ -5,15 +5,20 @@ My ~/.emacs.d
 ## Plugins
 - better-defaults
 - company
+- company-c-headers
 - hungry-delete
 - swiper
 - counsel
 - smartparens
 - flycheck
+- yasnippet
+- ivy-yasnippet
+- yasnippet-snippets
 - popwin
 - wn-mode
 - helm-gtags
-- company-c-headers
+- elpy
+- py-autopep8
 ## Denpendencies in emacs
 - epl
 - ivy
