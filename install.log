@@ -1,3 +1,2 @@
-20180715 +'system update' +make +build-essential +emacs +terminator +git
-20180722 +ibus-pinyin +shadowsocks
-20180819 +tree +python3-pip +python-pip +virtualenvwrapper
+make build-essential emacs terminator git ibus-pinyin shadowsocks-qt5/(sslocal+privoxy) tree python3-pip python-pip 
+virtualenvwrapper cmake

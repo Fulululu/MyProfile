@@ -82,6 +82,10 @@
 (add-hook 'python-mode 'flycheck-mode)
 
 ;; yasnippet and snippets setting
+(require 'yasnippet)
+(setq yas-snippet-dirs
+      '("~/.emacs.d/snippets"                 ;; personal snippets
+	))
 (add-hook 'c-mode-hook 'yas-minor-mode)
 (add-hook 'python-mode-hook 'yas-minor-mode)
 

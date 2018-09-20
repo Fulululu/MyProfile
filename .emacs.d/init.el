@@ -27,6 +27,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(add-hook (quote asm-mode-hook) t)
+ '(company-auto-complete t)
  '(company-auto-complete-chars (quote (32 41 46)))
  '(company-show-numbers t)
  '(elpy-modules
@@ -35,7 +36,8 @@
  '(helm-gtags-suggested-key-mapping t)
  '(package-selected-packages
    (quote
-    (sublimity counsel-projectile wn-mode better-defaults))))
+    (sublimity counsel-projectile wn-mode better-defaults)))
+ '(sp-escape-quotes-after-insert nil)) ;; temporary way to fix a bug that smartparens automatic escaping single quote in c-mode
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

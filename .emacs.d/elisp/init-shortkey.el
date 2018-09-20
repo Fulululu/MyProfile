@@ -38,15 +38,18 @@
   (define-key helm-gtags-mode-map (kbd "C-c C-p") 'helm-gtags-pop-stack)
   )
 
-;; shortkey for projectile
+;; projectile
 
 
-;; shortkey for comment/uncomment
+;; comment/uncomment
 (defun toggle-comment-on-line ()
   "comment or uncomment current line"
   (interactive)
   (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
 (global-set-key (kbd "C-c c") 'toggle-comment-on-line)
+
+;; goto-line
+(global-set-key (kbd "C-c C-g") 'goto-line)
 
 (provide 'init-shortkey)
 ;;; init-shortkey.el ends here

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: foo
+# key: foo
+# --
+${1:returntype} ${2:foo}(${3:})
+{
+
+}

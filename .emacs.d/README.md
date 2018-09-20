@@ -1,7 +1,7 @@
 My ~/.emacs.d
 ====
-(Based on GNU Emacs 26.1.0)
-<br>This repository contain my emacs setting in ~/.emacs.d
+This repository contain my emacs setting in ~/.emacs.d
+<br>(Base on GNU Emacs 26.1.0)
 ## Plugins
 - better-defaults
 - company
@@ -19,12 +19,12 @@ My ~/.emacs.d
 - helm-gtags
 - elpy
 - py-autopep8
-## Denpendencies in emacs
+## Emacs Denpendencies
 - epl
 - ivy
 - helm
 - dash
 - pkg-info
-## Denpendencies on system
+## System Denpendencies
 - clang
 - GNU_global
