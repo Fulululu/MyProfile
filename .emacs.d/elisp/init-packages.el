@@ -83,11 +83,10 @@
 
 ;; yasnippet and snippets setting
 (require 'yasnippet)
-(setq yas-snippet-dirs
-      '("~/.emacs.d/snippets"                 ;; personal snippets
-	))
-(add-hook 'c-mode-hook 'yas-minor-mode)
-(add-hook 'python-mode-hook 'yas-minor-mode)
+(yas-reload-all)
+(add-hook 'c-mode-hook #'yas-minor-mode)
+(add-hook 'c++-mode-hook #'yas-minor-mode)
+(add-hook 'python-mode-hook #'yas-minor-mode)
 
 ;; popwin setting
 (require 'popwin)

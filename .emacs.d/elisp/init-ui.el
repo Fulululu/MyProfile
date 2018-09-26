@@ -17,7 +17,7 @@
 (setq initial-frame-alist (quote ((fullscreen . maximized))))
 
 ;; global show linum
-(global-linum-mode t)
+;;(global-linum-mode t)
 
 ;; Highlight current line
 ;(global-hl-line-mode t)

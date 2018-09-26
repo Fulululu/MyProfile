@@ -29,6 +29,7 @@
  '(add-hook (quote asm-mode-hook) t)
  '(company-auto-complete t)
  '(company-auto-complete-chars (quote (32 41 46)))
+ '(company-idle-delay 0.3)
  '(company-show-numbers t)
  '(elpy-modules
    (quote
@@ -37,7 +38,8 @@
  '(package-selected-packages
    (quote
     (sublimity counsel-projectile wn-mode better-defaults)))
- '(sp-escape-quotes-after-insert nil)) ;; temporary way to fix a bug that smartparens automatic escaping single quote in c-mode
+ '(sp-escape-quotes-after-insert nil))
+ ;; temporary way to fix a bug that smartparens automatic escaping single quote in c-mode
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -48,3 +50,5 @@
 
 (provide 'init)
 ;;; init.el ends here
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
