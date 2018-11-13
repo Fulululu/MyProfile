@@ -36,6 +36,7 @@
   (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-previous-history)
   (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-next-history)
   (define-key helm-gtags-mode-map (kbd "C-c C-p") 'helm-gtags-pop-stack)
+  (define-key helm-gtags-mode-map (kbd "C-c o") 'helm-gtags-find-files)
   )
 
 ;; projectile
@@ -47,9 +48,18 @@
   (interactive)
   (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
 (global-set-key (kbd "C-c c") 'toggle-comment-on-line)
+;; comment/uncomment area
+(with-eval-after-load 'cc-mode
+  (define-key c-mode-map (kbd "C-c C-c") 'comment-or-uncomment-region)
+  (define-key c++-mode-map (kbd "C-c C-c") 'comment-or-uncomment-region)
+  )
+(with-eval-after-load 'makefile-mode
+  (define-key makefile-mode-map (kbd "C-c C-c") 'comment-or-uncomment-region)
+  )
+(with-eval-after-load 'python-mode
+  (define-key python-mode-map (kbd "C-c C-c") 'comment-or-uncomment-region)
+  )
 
-;; goto-line
-(global-set-key (kbd "C-c C-g") 'goto-line)
 
 (provide 'init-shortkey)
 ;;; init-shortkey.el ends here

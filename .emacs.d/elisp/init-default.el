@@ -49,5 +49,8 @@
 (setq c-default-style "linux"
       c-basic-offset 4)
 
+;; Solve query-replace BUG:args out of range
+(setq frame-title-format nil)
+
 (provide 'init-default)
 ;;; init-default.el ends here
