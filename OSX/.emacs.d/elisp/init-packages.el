@@ -91,7 +91,9 @@
 ;; company setting
 (use-package company
   :diminish company-mode
-  :init (add-hook 'after-init-hook 'global-company-mode))
+  :init (add-hook 'after-init-hook 'global-company-mode)
+  :bind (:map company-mode-map
+	      ("C-c g" . 'company-gtags)))
 ;; ivy setting
 (use-package ivy
   :demand
