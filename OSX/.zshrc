@@ -78,9 +78,9 @@ export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='emacsclient'
+  export EDITOR='emacs -nw'
 else
-  export EDITOR='emacsclient'
+  export EDITOR='emacs -nw'
 fi
 
 # Compilation flags
@@ -97,12 +97,15 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
+alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs -nw"
 alias emacsclient="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
 alias ec="emacsclient -nw"
 alias py3="python3"
 alias ll="ls -l"
 #alias | awk '{print "alias "$0}' | sed -E "s/^alias ([^=]+)='(.*)'$/alias \1 \2 \$*/g; s/'\\\''/'/g;" > ~/.emacs.d/eshell/alias
+alias gco="git checkout"
+alias gdc="git diff"
+alias rsyncbk='rsync -vzrtopg --progress -e ssh --delete'
 
 # Completion setting
 fpath=(~/.zsh/completion $fpath)

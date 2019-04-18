@@ -30,5 +30,17 @@
 (with-eval-after-load 'python-mode
   (define-key python-mode-map (kbd "C-c C-c") 'comment-or-uncomment-region))
 
+;; kill buffer
+(defun close-all-buffers ()
+  "Kill all buffer."
+  (interactive)
+  (mapc 'kill-buffer (buffer-list)))
+(defun kill-other-buffers ()
+  "Kill all other buffers."
+  (interactive)
+  (mapc 'kill-buffer
+	(delq (current-buffer)
+	      (remove-if-not '(lambda (x) (or (buffer-file-name x) (eq 'dired-mode (buffer-local-value 'major-mode x)))) (buffer-list)))))
+
 (provide 'init-shortkey)
 ;;; init-shortkey.el ends here

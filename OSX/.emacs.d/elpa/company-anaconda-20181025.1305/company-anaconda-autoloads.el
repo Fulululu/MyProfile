@@ -20,6 +20,10 @@ See `company-backends' for more info about COMMAND and ARG.
 
 ;;;***
 
+;;;### (autoloads nil nil ("company-anaconda-pkg.el") (0 0 0 0))
+
+;;;***
+
 ;; Local Variables:
 ;; version-control: never
 ;; no-byte-compile: t

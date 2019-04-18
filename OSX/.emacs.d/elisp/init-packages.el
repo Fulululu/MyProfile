@@ -7,7 +7,8 @@
      (require 'package)
      (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
 			      ("melpa" . "http://elpa.emacs-china.org/melpa/")
-			      ("melpa-stable" . "http://elpa.emacs-china.org/melpa-stable/"))))
+			      ("melpa-stable" . "http://elpa.emacs-china.org/melpa-stable/")
+			      )))
 ;;elpa.emacs-china.org is a mirror of ELPA
 
 ;; cl - Common Lisp Extension
@@ -15,8 +16,9 @@
 ;; fix compile error:rx-constituents is void
 (require 'rx)
 
-;; Add Packages
+;; Packages List
 (defvar my/packages '(
+		      ;; Common
 		      use-package
 		      diminish
                       better-defaults
@@ -25,21 +27,32 @@
 		      popwin
 		      wn-mode
 		      pbcopy
-		      company
-                      company-c-headers
 		      ivy
 		      swiper
 		      counsel
+		      ;; For completion and programeing features
+		      company
 		      flycheck ;;flymake
-		      exec-path-from-shell
-		      counsel-gtags ;;with patch from elipeLema/emacs-counsel-gtags.git
 		      projectile
 		      yasnippet
 		      yasnippet-snippets
 		      ivy-yasnippet
+		      magit ;; (include git-commit, transient, with-editor and async)
+		      ;; For Shell
+		      exec-path-from-shell
+		      company-shell
+		      ;; For C/C++
+		      company-c-headers
+		      irony
+		      company-irony
+		      counsel-gtags ;;with patch from elipeLema/emacs-counsel-gtags.git
+		      flycheck-irony
+		      ;; For Python
 		      anaconda-mode
 		      company-anaconda
 		      pyenv-mode
+		      ;; For CMake
+		      cmake-mode
 		      ))
 
 ;; Associate my/packages with package-autoremove function in order to uninstall packages
@@ -59,7 +72,7 @@
     (when (not (package-installed-p pkg))
       (package-install pkg))))
 
-;; ================================ package setting ==================================
+;; ================================ Package Setting ==================================
 ;; use-package setting
 (eval-when-compile
   (require 'use-package))
@@ -132,20 +145,6 @@
 (use-package exec-path-from-shell
   ;;:if (memq window-system '(mac ns))
   :config (exec-path-from-shell-initialize))
-;; counsel-gtags setting
-(use-package counsel-gtags
-  :diminish counsel-gtags-mode
-  :init
-  (add-hook 'asm-mode-hook 'counsel-gtags-mode)
-  (add-hook 'c-mode-hook 'counsel-gtags-mode)
-  (add-hook 'c++-mode-hook 'counsel-gtags-mode)
-  :bind (:map counsel-gtags-mode-map
-	      ("C-c d" . 'counsel-gtags-find-definition)
-	      ("C-c r" . 'counsel-gtags-find-reference)
-	      ("C-c s" . 'counsel-gtags-find-symbol)
-	      ("C-c f" . 'counsel-gtags-find-file)
-	      ("M-," . 'counsel-gtags-go-backward)
-	      ("M-." . 'counsel-gtags-go-forward)))
 ;; projectile setting
 (use-package projectile
   :diminish projectile-mode
@@ -171,6 +170,37 @@
   :config (yas-reload-all)
   :bind (:map yas-minor-mode-map
 	      ("C-c y" . 'ivy-yasnippet)))
+;; counsel-gtags setting
+(use-package counsel-gtags
+  :diminish counsel-gtags-mode
+  :init
+  (add-hook 'asm-mode-hook 'counsel-gtags-mode)
+  (add-hook 'c-mode-hook 'counsel-gtags-mode)
+  (add-hook 'c++-mode-hook 'counsel-gtags-mode)
+  :bind (:map counsel-gtags-mode-map
+	      ("C-c d" . 'counsel-gtags-find-definition)
+	      ("C-c r" . 'counsel-gtags-find-reference)
+	      ("C-c s" . 'counsel-gtags-find-symbol)
+	      ("C-c f" . 'counsel-gtags-find-file)
+	      ("M-," . 'counsel-gtags-go-backward)
+	      ("M-." . 'counsel-gtags-go-forward)))
+;; magit setting
+(use-package magit
+  :config (setq magit-view-git-manual-method 'man))
+;; irony-mode setting
+(use-package irony-mode
+  :diminish irony-mode ;; issue: this does not take effect
+  :no-require t
+  :init
+  (add-hook 'c++-mode-hook 'irony-mode)
+  (add-hook 'c-mode-hook 'irony-mode)
+  (add-hook 'irony-mode-hook (lambda()(diminish 'irony-mode))))
+;; flycheck-irony setting
+;; (use-package flycheck-irony
+;;   :defer t
+;;   :init (progn
+;; 	  (setq irony-additional-clang-options '("-std=c++11"))
+;; 	  (add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
 ;; anaconda-mode setting
 (use-package anaconda-mode
   :diminish (anaconda-mode anaconda-eldoc-mode)
@@ -185,17 +215,24 @@
   :config (pyenv-mode t))
 
 
-;; ================================ function setting ==================================
-;; company-c-headers setting
-(defun my/c-mode-hook-func ()
+;; ================================ Custom Functions ==================================
+;; Shell mode
+(defun my-shell-mode-hook-func ()
+  "Add company-anaconda to company-backends."
+  (add-to-list 'company-backends 'company-shell))
+(add-hook 'shell-mode-hook '(my-shell-mode-hook-func company-shell-env))
+;; C/C++ mode
+(defun my-c/c++-mode-hook-func ()
   "Add company-c-headers to company-backends."
-  (add-to-list 'company-backends 'company-c-headers))
-(add-hook 'c-mode-hook 'my/c-mode-hook-func)
-;; company-anaconda setting
-(defun my/python-mode-hook-func ()
+  (add-to-list 'company-backends 'company-c-headers)
+  (add-to-list 'company-backends 'company-irony))
+(add-hook 'c-mode-hook 'my-c/c++-mode-hook-func)
+(add-hook 'c++-mode-hook 'my-c/c++-mode-hook-func)
+;; Python mode
+(defun my-python-mode-hook-func ()
   "Add company-anaconda to company-backends."
   (add-to-list 'company-backends 'company-anaconda))
-(add-hook 'python-mode-hook 'my/python-mode-hook-func)
+(add-hook 'python-mode-hook 'my-python-mode-hook-func)
 
 ;; (defun my-annotation-function (candidate)
 ;;   (let ((description (get-text-property 0 'description candidate)))

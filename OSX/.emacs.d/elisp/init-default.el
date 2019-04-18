@@ -28,7 +28,7 @@
 ;; http://stackoverflow.com/questions/294664/how-to-set-the-font-size-in-emacs
 (set-face-attribute 'default nil :height 160)
 ;; set backup directory
-(setq backup-directory-alist (quote (("." . "~/.emacs/backups"))))
+(setq backup-directory-alist (quote (("." . "~/.emacs.d/backups"))))
 ;; Disable auto make backup file
 ;;(setq make-backup-files nil)
 ;; disable auto-save
@@ -53,7 +53,8 @@
 ;; Tab setting
 (setq c-default-style "linux"
       c-basic-offset 4)
-
+;; enable-local-variable
+;; (setq enable-local-variables :all)
 
 (provide 'init-default)
 ;;; init-default.el ends here
