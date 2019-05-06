@@ -1,30 +1,41 @@
 My ~/.emacs.d
 ====
 This repository contain my emacs setting in ~/.emacs.d
-<br>(Base on GNU Emacs 26.1.0)
-## Plugins
+<br>(GNU Emacs 26.1.0 on Ubuntu 18.04.2)
+## Common Package
+- use-package
+- diminish
 - better-defaults
-- company
-- company-c-headers
 - hungry-delete
-- swiper
-- counsel
 - smartparens
-- flycheck
-- yasnippet
-- ivy-yasnippet
-- yasnippet-snippets
 - popwin
 - wn-mode
-- helm-gtags
-- elpy
-- py-autopep8
-## Emacs Denpendencies
-- epl
+- pbcopy
 - ivy
-- helm
-- dash
-- pkg-info
-## System Denpendencies
+- swiper
+- counsel
+## Common Programming Package
+- company
+- flycheck
+- projectile
+- yasnippet
+- yasnippet-snippets
+- ivy-yasnippet
+- magit
+- lsp-mode
+- lsp-ui
+- company-lsp
+## Specification Programing Package
+#### For Shell
+- 
+#### For C/C++
+- ccls(client)
+- company-c-headers
+#### For Python
+- 
+#### For CMake
+- cmake-mode
+## System Denpendency
 - clang
-- GNU_global
+- ccls(server)
+- bash-language-server

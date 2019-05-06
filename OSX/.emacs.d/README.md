@@ -1,7 +1,7 @@
 My ~/.emacs.d
 ====
 This repository contain my emacs setting in ~/.emacs.d
-<br>(Base on GNU Emacs 26.1.0 on OS X Mojave)
+<br>(GNU Emacs 26.1.0 on macOS Mojave 10.14.3)
 ## Common Package
 - use-package
 - diminish
@@ -14,7 +14,7 @@ This repository contain my emacs setting in ~/.emacs.d
 - ivy
 - swiper
 - counsel
-## For completion and other programing features
+## Common Programming Package
 - company
 - flycheck
 - projectile
@@ -22,6 +22,7 @@ This repository contain my emacs setting in ~/.emacs.d
 - yasnippet-snippets
 - ivy-yasnippet
 - magit
+## Specification Programing Package
 #### For Shell
 - exec-path-from-shell
 - company-shell

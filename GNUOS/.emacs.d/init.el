@@ -12,8 +12,6 @@
 ;; version:1.0
 
 ;;; code:
-;;------------------------------------- Emacs UI Setting ------------------------------------
-(require 'init-ui)
 ;;------------------------------------- Basic Setting ---------------------------------------
 (require 'init-default)
 ;;------------------------------------- Package Setting--------------------------------------
@@ -27,17 +25,14 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(add-hook (quote asm-mode-hook) t)
- '(company-auto-complete t)
+ '(company-auto-complete nil)
  '(company-auto-complete-chars (quote (32 41 46)))
- '(company-idle-delay 0.3)
+ '(company-idle-delay 0.1)
  '(company-show-numbers t)
- '(elpy-modules
-   (quote
-    (elpy-module-company elpy-module-eldoc elpy-module-pyvenv elpy-module-highlight-indentation elpy-module-yasnippet elpy-module-django elpy-module-sane-defaults)))
- '(helm-gtags-suggested-key-mapping t)
  '(package-selected-packages
    (quote
-    (sublimity counsel-projectile wn-mode better-defaults)))
+    (flycheck counsel-projectile wn-mode better-defaults)))
+ '(python-shell-interpreter "python3")
  '(sp-escape-quotes-after-insert nil))
  ;; temporary way to fix a bug that smartparens automatic escaping single quote in c-mode
 (custom-set-faces
@@ -47,8 +42,7 @@
  ;; If there is more than one, they won't work right.
  )
 
-
-(provide 'init)
-;;; init.el ends here
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
+(provide 'init)
+;;; init.el ends here
