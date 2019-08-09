@@ -45,6 +45,7 @@
 		      ;; For C/C++
 		      ccls
 		      company-c-headers
+		      google-c-style
 		      ;; For Python
 		      ;; For CMake
 		      cmake-mode
@@ -133,7 +134,7 @@
 
 (use-package flycheck
   :commands flycheck-mode
-  :diminish flycheck-mode
+  ;; :diminish flycheck-mode
   :hook ((emacs-lisp-mode asm-mode c-mode c++-mode python-mode) . flycheck-mode))
 
 (use-package projectile
@@ -159,7 +160,11 @@
 
 (use-package lsp-mode
   :commands lsp
-  :hook (shell-mode . lsp))
+  :hook (shell-mode . lsp)
+  :bind (:map lsp-mode-map
+	      ("C-c d" . 'lsp-find-definition)
+	      ("C-c r" . 'lsp-find-references)
+	      ("C-c i" . 'lsp-find-implementation)))
 
 (use-package lsp-ui
   :commands lsp-ui-mode
@@ -173,12 +178,19 @@
   :init
   (setq ccls-executable "/usr/local/bin/ccls")
   (setq ccls-args '("--log-file=/tmp/ccls.log"))
+  ;; (setq company-transformers nil company-lsp-async t company-lsp-cache-candidates nil) ;; Disabled ccls cache
+  (setq ccls-initialization-options `(:cacheDirectory "/tmp/ccls_cache"
+				      :compilationDatabaseDirectory "build"))
+  (setq ccls-sem-highlight-method 'font-lock) ;; enable semantic highlighting
   (setq lsp-prefer-flymake nil)
   (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
   :hook ((c-mode c++-mode) . (lambda () (require 'ccls) (lsp))))
 
 (use-package company-c-headers
   :hook ((c-mode c++-mode) . (lambda () (add-to-list 'company-backends 'company-c-headers))))
+
+(use-package google-c-style
+  :hook ((c-mode c++-mode) . google-set-c-style))
 
 ;; ================================ Custom Functions ==================================
 ;; Shell mode

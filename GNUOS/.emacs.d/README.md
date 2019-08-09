@@ -31,6 +31,7 @@ This repository contain my emacs setting in ~/.emacs.d
 #### For C/C++
 - ccls(client)
 - company-c-headers
+- google-c-style
 #### For Python
 - 
 #### For CMake

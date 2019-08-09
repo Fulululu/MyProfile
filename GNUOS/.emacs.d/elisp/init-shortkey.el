@@ -3,15 +3,6 @@
 ;; Codes here are all about custom shortkey.
 
 ;;; Code:
-;; ;; binding open-init-file to <f12>.
-;; (defun open-init-file()
-;;   (interactive)
-;;   (find-file "~/.emacs.d/init.el")
-;;   )
-;; (global-set-key (kbd "<f12>") 'open-init-file)
-
-;; ;; ecb
-;; ;(global-set-key (kbd "<f11>") 'ecb-minor-mode)
 
 ;; comment/uncomment
 (defun toggle-comment-on-line ()
@@ -29,6 +20,8 @@
   (define-key makefile-mode-map (kbd "C-c C-c") 'comment-or-uncomment-region))
 (with-eval-after-load 'python-mode
   (define-key python-mode-map (kbd "C-c C-c") 'comment-or-uncomment-region))
+(with-eval-after-load 'cmake-mode
+  (define-key cmake-mode-map (kbd "C-c C-c") 'comment-or-uncomment-region))
 
 ;; kill buffer
 (defun close-all-buffers ()
