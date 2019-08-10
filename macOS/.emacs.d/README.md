@@ -22,22 +22,20 @@ This repository contain my emacs setting in ~/.emacs.d
 - yasnippet-snippets
 - ivy-yasnippet
 - magit
+- lsp-mode
+- lsp-ui
 ## Specification Programing Package
 #### For Shell
 - exec-path-from-shell
-- company-shell
 #### For C/C++
+- ccls
 - company-c-headers
-- irony
-- company-irony
-- counsel-gtags
-- flycheck-irony
+- google-c-style
 #### For Python
-- anaconda-mode
-- company-anaconda
-- pyenv-mode
+- 
 #### For CMake
 - cmake-mode
 ## System Denpendency
 - clang
-- GNU_global
+- ccls(server)
+- bash-language-server

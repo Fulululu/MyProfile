@@ -25,15 +25,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(add-hook (quote asm-mode-hook) t)
- '(anaconda-mode-localhost-address "localhost")
  '(company-auto-complete nil)
  '(company-auto-complete-chars (quote (32 41 46)))
- '(company-gtags-modes (quote (prog-mode jde-mode c-mode c++-mode cc-mode)))
  '(company-idle-delay 0.1)
  '(company-show-numbers t)
- '(package-selected-packages
-   (quote
-    (flycheck company-anaconda counsel-projectile wn-mode better-defaults)))
+ '(lsp-enable-snippet nil)
  '(python-shell-interpreter "python3")
  '(sp-escape-quotes-after-insert nil))
  ;; temporary way to fix a bug that smartparens automatic escaping single quote in c-mode

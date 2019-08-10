@@ -51,8 +51,8 @@
 (add-hook 'c-mode-hook 'turn-off-abbrev-mode)
 (add-hook 'c++-mode-hook 'turn-off-abbrev-mode)
 ;; Tab setting
-(setq c-default-style "linux"
-      c-basic-offset 4)
+;; (setq c-default-style "linux"
+;;       c-basic-offset 4)
 ;; enable-local-variable
 ;; (setq enable-local-variables :all)
 

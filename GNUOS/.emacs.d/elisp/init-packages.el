@@ -5,9 +5,9 @@
 ;;; Code:
 (when (>= emacs-major-version 24)
      (require 'package)
-     (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
+     (setq package-archives '(("gnu" . "http://elpa.emacs-china.org/gnu/")
 			      ("melpa" . "http://elpa.emacs-china.org/melpa/")
-			      ("melpa-stable" . "http://elpa.emacs-china.org/melpa-stable/")
+			      ("melpa-stable" . "http://elpa.emacs-china.org/melpa/stable")
 			      )))
 ;;elpa.emacs-china.org is a mirror of ELPA
 
@@ -39,8 +39,8 @@
 		      ivy-yasnippet
 		      magit ;; (include git-commit, transient, with-editor and async)
                       lsp-mode
-                      lsp-ui
                       company-lsp
+                      lsp-ui
 		      ;; For Shell
 		      ;; For C/C++
 		      ccls
@@ -79,7 +79,6 @@
 
 ;; built-in hideshow setting
 (use-package hideshow
-  :commands hs-minor-mode
   :diminish hs-minor-mode
   :init
   (add-hook 'c-mode-hook 'hs-minor-mode)
@@ -124,17 +123,16 @@
 
 (use-package counsel
   :diminish counsel-mode
-  :config (counsel-mode t)
+  :init (counsel-mode t)
   :bind (:map counsel-mode-map
 	      ("C-h f" . 'counsel-describe-function)
 	      ("C-h v" . 'counsel-describe-variable)
 	      ("C-h k" . 'counsel-descbinds)
 	      ("M-x" . counsel-M-x)
-	      ("C-x C-r" . counsel-recentf)))
+	      ("C-x r" . counsel-recentf)))
 
 (use-package flycheck
   :commands flycheck-mode
-  ;; :diminish flycheck-mode
   :hook ((emacs-lisp-mode asm-mode c-mode c++-mode python-mode) . flycheck-mode))
 
 (use-package projectile
@@ -160,7 +158,8 @@
 
 (use-package lsp-mode
   :commands lsp
-  :hook (shell-mode . lsp)
+  :hook (sh-mode . lsp)
+  :init (setq lsp-prefer-flymake nil)
   :bind (:map lsp-mode-map
 	      ("C-c d" . 'lsp-find-definition)
 	      ("C-c r" . 'lsp-find-references)
@@ -168,7 +167,7 @@
 
 (use-package lsp-ui
   :commands lsp-ui-mode
-  :init (add-hook 'lsp-mode-hook 'lsp-ui-mode))
+  :hook (lsp-mode . lsp-ui-mode))
 
 (use-package company-lsp
   :commands company-lsp
@@ -177,12 +176,8 @@
 (use-package ccls
   :init
   (setq ccls-executable "/usr/local/bin/ccls")
-  (setq ccls-args '("--log-file=/tmp/ccls.log"))
-  ;; (setq company-transformers nil company-lsp-async t company-lsp-cache-candidates nil) ;; Disabled ccls cache
-  (setq ccls-initialization-options `(:cacheDirectory "/tmp/ccls_cache"
-				      :compilationDatabaseDirectory "build"))
+  (setq ccls-initialization-options `(:compilationDatabaseDirectory "build"))
   (setq ccls-sem-highlight-method 'font-lock) ;; enable semantic highlighting
-  (setq lsp-prefer-flymake nil)
   (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
   :hook ((c-mode c++-mode) . (lambda () (require 'ccls) (lsp))))
 

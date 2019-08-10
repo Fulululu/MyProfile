@@ -29,9 +29,7 @@
  '(company-auto-complete-chars (quote (32 41 46)))
  '(company-idle-delay 0.1)
  '(company-show-numbers t)
- '(package-selected-packages
-   (quote
-    (flycheck counsel-projectile wn-mode better-defaults)))
+ '(lsp-enable-snippet nil)
  '(python-shell-interpreter "python3")
  '(sp-escape-quotes-after-insert nil))
  ;; temporary way to fix a bug that smartparens automatic escaping single quote in c-mode

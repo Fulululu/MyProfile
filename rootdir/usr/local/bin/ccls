@@ -1,0 +1,6 @@
+#!/bin/sh
+# This is a wrapper for ccls
+exec $HOME/bin/ccls $@ --log-file=/tmp/ccls.out --init='{"cache": {"directory": "/tmp/ccls-cache"},
+							 "clang": {"extraArgs": ["-std=c++14"]},
+							 "client": {"snippetSupport": false},
+							 "index": {"comments": 1}}'
