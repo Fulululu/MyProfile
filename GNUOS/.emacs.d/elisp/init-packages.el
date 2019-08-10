@@ -44,7 +44,6 @@
 		      ;; For Shell
 		      ;; For C/C++
 		      ccls
-		      company-c-headers
 		      google-c-style
 		      ;; For Python
 		      ;; For CMake
@@ -180,9 +179,6 @@
   (setq ccls-sem-highlight-method 'font-lock) ;; enable semantic highlighting
   (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
   :hook ((c-mode c++-mode) . (lambda () (require 'ccls) (lsp))))
-
-(use-package company-c-headers
-  :hook ((c-mode c++-mode) . (lambda () (add-to-list 'company-backends 'company-c-headers))))
 
 (use-package google-c-style
   :hook ((c-mode c++-mode) . google-set-c-style))
