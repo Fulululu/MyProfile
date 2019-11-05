@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: fprintf
-# key: fpr
-# --
-fprintf(${1:stream}, "${2:format string}"${3:});

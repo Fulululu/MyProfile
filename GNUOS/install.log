@@ -1,2 +1,0 @@
-make build-essential emacs terminator git clang GNU_global ibus-pinyin shadowsocks-qt5/(sslocal+privoxy) tree python3-pip python-pip
-virtualenvwrapper cmake cmake-qt-gui unrar python3-numpy (libavcodec-dev libavformat-dev libswscale-dev) aria2 openssh-server
