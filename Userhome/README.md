@@ -6,6 +6,7 @@
 - .profile
 - .zshenv
 - .zshrc
+- .tmux.conf
 #### macOS only
 - Library
 - bin/ccls-macOS
