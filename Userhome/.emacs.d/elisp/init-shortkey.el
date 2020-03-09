@@ -4,24 +4,12 @@
 
 ;;; Code:
 
-;; comment/uncomment
+;; comment/uncomment single line. FIXME: May need to move to init-package.el when there is a conflict with key "C-c c".
 (defun toggle-comment-on-line ()
   "Comment or uncomment current line."
   (interactive)
   (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
 (global-set-key (kbd "C-c c") 'toggle-comment-on-line)
-;; comment/uncomment area
-(with-eval-after-load 'elisp-mode
-  (define-key emacs-lisp-mode-map (kbd "C-c C-c") 'comment-or-uncomment-region))
-(with-eval-after-load 'cc-mode
-  (define-key c-mode-map  (kbd "C-c C-c") 'comment-or-uncomment-region)
-  (define-key c++-mode-map (kbd "C-c C-c") 'comment-or-uncomment-region))
-(with-eval-after-load 'makefile-mode
-  (define-key makefile-mode-map (kbd "C-c C-c") 'comment-or-uncomment-region))
-(with-eval-after-load 'python-mode
-  (define-key python-mode-map (kbd "C-c C-c") 'comment-or-uncomment-region))
-(with-eval-after-load 'cmake-mode
-  (define-key cmake-mode-map (kbd "C-c C-c") 'comment-or-uncomment-region))
 
 ;; kill buffer
 (defun close-all-buffers ()
