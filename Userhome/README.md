@@ -11,5 +11,5 @@
 - Library
 - bin/ccls-macOS
 #### GNUOS only
-- .config
+- .config/
 - bin/ccls-GNUOS
