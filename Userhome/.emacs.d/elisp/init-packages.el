@@ -79,6 +79,9 @@
 ;; use-package setting
 (eval-when-compile
   (require 'use-package))
+;; global package ensure
+(require 'use-package-ensure)
+(setq use-package-always-ensure t)
 
 (use-package diminish
   :commands diminish
@@ -213,6 +216,9 @@
 
 ;; ================================ Built-in Package Setting ==================================
 (use-package elisp-mode
+  ;; use-package will use new version of package instead the built-in one when global
+  ;; package ensure is used. set it to nil if you don't want to do so.
+  :ensure nil
   :bind (:map emacs-lisp-mode-map
 	      ("C-c C-c" . 'comment-or-uncomment-region)))
 
