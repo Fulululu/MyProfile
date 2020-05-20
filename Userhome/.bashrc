@@ -57,11 +57,21 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+   PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;31m\]\[\033[00m\]\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+   PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
+
+# Add prompt which shows git infomation to terminal when you are in a git repo
+if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
+    GIT_PROMPT_ONLY_IN_REPO=1
+    GIT_PROMPT_THEME=Single_line_NoExitState_Gentoo
+    source $HOME/.bash-git-prompt/gitprompt.sh
+else
+    echo "bash-git-prompt not found. Please run command below to get it:"
+    echo "- git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1"
+fi
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in

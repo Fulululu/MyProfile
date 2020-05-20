@@ -8,8 +8,8 @@
 - .zshrc
 - .tmux.conf
 #### macOS only
-- Library
+- Library/
 - bin/ccls-macOS
 #### GNUOS only
-- .config
+- .config/
 - bin/ccls-GNUOS

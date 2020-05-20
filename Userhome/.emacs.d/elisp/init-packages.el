@@ -79,10 +79,13 @@
     (when (not (package-installed-p pkg))
       (package-install pkg))))
 
-;; ================================ Package Setting ==================================
+;; ================================ Extensional Package Setting ==================================
 ;; use-package setting
 (eval-when-compile
   (require 'use-package))
+;; global package ensure
+(require 'use-package-ensure)
+(setq use-package-always-ensure t)
 
 (use-package diminish
   :commands diminish
@@ -199,12 +202,49 @@
 (use-package google-c-style
   :hook ((c-mode c++-mode) . google-set-c-style))
 
+
+(use-package cmake-mode
+  :bind (:map cmake-mode-map
+	      ("C-c C-c" . 'comment-or-uncomment-region)))
+
+(use-package php-mode
+  :bind (:map php-mode-map
+	      ("C-c C-c" . 'comment-or-uncomment-region)))
+
 (use-package dockerfile-mode
   :init
   (add-to-list 'load-path "~/.emacs.d/elpa/dockerfile-mode/")
   (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
 
 (use-package docker-compose-mode)
+
+;; ================================ Built-in Package Setting ==================================
+(use-package elisp-mode
+  ;; use-package will use new version of package instead the built-in one when global
+  ;; package ensure is used. set it to nil if you don't want to do so.
+  :ensure nil
+  :bind (:map emacs-lisp-mode-map
+	      ("C-c C-c" . 'comment-or-uncomment-region)))
+
+(use-package sh-script
+  :bind (:map sh-mode-map
+	      ("C-c C-c" . 'comment-or-uncomment-region)))
+
+(use-package cc-mode
+  :mode ("\\.cc\\'" . c++-mode)
+  :bind (:map c-mode-map
+	      ("C-c C-c" . 'comment-or-uncomment-region))
+  :bind (:map c++-mode-map
+	      ("C-c C-c" . 'comment-or-uncomment-region)))
+
+(use-package python
+  :bind (:map python-mode-map
+	      ("C-c C-c" . 'comment-or-uncomment-region)))
+
+(use-package make-mode
+  :bind (:map makefile-mode-map
+	      ("C-c C-c" . 'comment-or-uncomment-region)))
+
 
 (provide 'init-packages)
 ;;; init-packages.el ends here
