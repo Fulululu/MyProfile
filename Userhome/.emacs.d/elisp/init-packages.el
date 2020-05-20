@@ -56,6 +56,10 @@
 		      ;; For Docker
 		      dockerfile-mode
 		      docker-compose-mode
+		      ;; For Protocol Buffers
+		      protobuf-mode
+		      ;; For Json
+		      json-mode
 		      ))
 
 ;; Associate my/packages with package-autoremove function in order to uninstall packages

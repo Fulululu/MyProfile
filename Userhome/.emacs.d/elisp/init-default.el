@@ -40,6 +40,8 @@
 ;;(setq enable-recursive-minibuffers t)
 ;; revert when files changed
 (global-auto-revert-mode t)
+;; Default coding system
+(prefer-coding-system 'utf-8)
 
 (provide 'init-default)
 ;;; init-default.el ends here
