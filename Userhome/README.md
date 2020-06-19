@@ -2,16 +2,16 @@
 
 #### Common
 - .emacs.d
-- .bash_aliases
-- .bashrc
-- .profile
-- .zshenv
-- .zshrc
 - .tmux.conf
 
 #### macOS only
+- .zshenv
+- .zshrc
 - Library/
 
 #### GNUOS only
+- .bash_aliases
+- .bashrc
+- .profile
 - .config/
 
