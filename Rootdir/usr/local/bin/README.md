@@ -1,5 +1,5 @@
 # Introduction
-This directory contain multiple version of pre-compiled ccls<\br>
+This directory contain multiple version of pre-compiled ccls
 
 # Compile manually
 
