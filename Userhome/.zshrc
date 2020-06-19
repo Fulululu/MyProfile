@@ -104,8 +104,19 @@ alias py3="python3"
 alias ll="ls -l"
 alias gco="git checkout"
 alias gdc="git diff"
-alias rsyncbk='rsync -vzrtopg --progress -e ssh --delete'
 
 # Completion setting
 fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit && compinit -i
+
+# proxy setting
+function setproxy () {
+    export http_proxy="socks5://127.0.0.1:1085"
+    export https_proxy="socks5://127.0.0.1:1085"
+}
+
+function unsetproxy () {
+    unset http_proxy
+    unset https_proxy
+}
+
