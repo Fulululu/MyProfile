@@ -1,4 +1,5 @@
 ## Introduction
+
 #### Common
 - .emacs.d
 - .bash_aliases
@@ -7,9 +8,10 @@
 - .zshenv
 - .zshrc
 - .tmux.conf
+
 #### macOS only
 - Library/
-- bin/ccls-macOS
+
 #### GNUOS only
 - .config/
-- bin/ccls-GNUOS
+
