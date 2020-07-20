@@ -20,7 +20,6 @@ This repository contain my emacs setting in ~/.emacs.d
 - projectile
 - yasnippet
 - yasnippet-snippets
-- ivy-yasnippet
 - magit
 - lsp-mode
 - lsp-ui
@@ -52,3 +51,7 @@ This repository contain my emacs setting in ~/.emacs.d
 - clang
 - ccls
 - gopls
+
+## TODO
+- lsp-treemacs
+- dap-mode

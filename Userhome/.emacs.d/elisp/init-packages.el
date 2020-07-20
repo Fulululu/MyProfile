@@ -43,7 +43,7 @@
 
 (use-package flymake
   ;; Disable "Warning [flymake init.el]: Disabling backend flymake-proc-legacy-flymake because
-  ;; (error CanÕt find a suitable init function) " in *Flymake log* buffer
+  ;; (error Canâ€™t find a suitable init function) " in *Flymake log* buffer
   :config (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake))
 
 ;; ================================ 3th-party Package Setting ==================================
@@ -191,8 +191,7 @@
   (add-hook 'go-mode-hook (lambda()
 			    (add-hook 'before-save-hook #'lsp-format-buffer t t)
 			    (add-hook 'before-save-hook #'lsp-organize-imports t t)
-			    (lsp-register-custom-settings '(("gopls.completeUnimported" t t) ("gopls.staticcheck" t t)))))
-  )
+			    (lsp-register-custom-settings '(("gopls.completeUnimported" t t) ("gopls.staticcheck" t t))))))
 
 (use-package dockerfile-mode
   :ensure t
@@ -221,4 +220,3 @@
 
 (provide 'init-packages)
 ;;; init-packages.el ends here
-
