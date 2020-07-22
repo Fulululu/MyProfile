@@ -80,8 +80,7 @@
   :config
   (setq company-idle-delay 0.1
 	company-minimum-prefix-length 1
-	company-backends '(company-capf))
-)
+	company-backends '(company-capf)))
 
 (use-package ivy
   :ensure t
@@ -120,8 +119,10 @@
   :config (setq projectile-completion-system 'ivy)
   :bind (:map projectile-mode-map
 	      ("s-p" . 'projectile-command-map)
-	      ("C-c p" . 'projectile-command-map))
-  )
+	      ("C-c p" . 'projectile-command-map)))
+
+(use-package ivy-yasnippet
+  :ensure t)
 
 (use-package yasnippet
   :ensure t
@@ -131,8 +132,7 @@
   :hook ((c-mode c++-mode python-mode asm-mode sh-mode go-mode) . yas-minor-mode)
   :config (yas-reload-all)
   :bind (:map yas-minor-mode-map
-	      ("C-c & y" . 'ivy-yasnippet))
-  )
+	      ("C-c & y" . 'ivy-yasnippet)))
 
 (use-package yasnippet-snippets
   :ensure t)
@@ -148,8 +148,7 @@
 (use-package lsp-mode
   :ensure t
   :commands lsp
-  :hook ((sh-mode go-mode) . lsp-deferred)
-  )
+  :hook ((sh-mode go-mode) . lsp-deferred))
 
 (use-package lsp-ui
   :ensure t
@@ -157,8 +156,7 @@
   :hook (lsp-mode . lsp-ui-mode)
   :bind (:map lsp-ui-mode-map
 	      ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
-              ([remap xref-find-references] . lsp-ui-peek-find-references))
-  )
+              ([remap xref-find-references] . lsp-ui-peek-find-references)))
 
 (use-package ccls
   :ensure t
