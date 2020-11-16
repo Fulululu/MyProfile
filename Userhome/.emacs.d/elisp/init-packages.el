@@ -38,7 +38,7 @@
 ;; ================================ Built-in Package Setting ==================================
 (use-package hideshow
   :diminish hs-minor-mode
-  :hook ((c-mode c++mode) . hs-minor-mode)
+  :hook ((c-mode c++mode json-mode) . hs-minor-mode)
   :config (setq hs-allow-nesting t))
 
 (use-package flymake

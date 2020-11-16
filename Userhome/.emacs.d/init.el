@@ -29,7 +29,7 @@
  '(inhibit-startup-echo-area-message "")
  '(inhibit-startup-screen t)
  '(mouse-wheel-progressive-speed nil)
- '(package-selected-packages (quote (company-lsp use-package diminish bind-key)))
+ '(package-selected-packages (quote (ivy-yasnippet use-package diminish bind-key)))
  '(recentf-mode t)
  '(scroll-bar-mode nil)
  '(show-paren-mode t)

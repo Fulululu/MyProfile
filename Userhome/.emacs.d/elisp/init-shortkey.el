@@ -32,6 +32,8 @@
   (define-key protobuf-mode-map (kbd "C-c C-c") 'comment-or-uncomment-region))
 (with-eval-after-load 'json-mode
   (define-key json-mode-map (kbd "C-c C-c") 'comment-or-uncomment-region))
+(with-eval-after-load 'yaml-mode
+  (define-key yaml-mode-map (kbd "C-c C-c") 'comment-or-uncomment-region))
 (with-eval-after-load 'markdown-mode
   (define-key markdown-mode-map (kbd "C-c C-c") 'comment-or-uncomment-region))
 (with-eval-after-load 'go-mode

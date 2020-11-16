@@ -7,7 +7,10 @@
 (if (equal window-system nil)
     ;; Character-only environment
     ;; Turn off menu bar
-    (menu-bar-mode 0)
+    (progn
+      (menu-bar-mode 0)
+      (add-to-list 'default-frame-alist '(background-color . "black"))
+     )
   ;; Window environment
   ;; Set full screen when open emacs
   (setq initial-frame-alist (quote ((fullscreen . maximized))))
