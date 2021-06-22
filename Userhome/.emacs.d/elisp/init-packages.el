@@ -3,37 +3,15 @@
 ;; Codes here are all about pluging packages.
 
 ;;; Code:
-;; 1. Setting package source to mirror of GNU and ELPA
+;; ================================ Basic Package Setting ==================================
 (require 'package)
 (setq package-archives '(("gnu" . "https://elpa.emacs-china.org/gnu/")
-			 ("melpa" . "https://elpa.emacs-china.org/melpa/")))
+                         ("melpa" . "https://elpa.emacs-china.org/melpa/")))
 
-;; 2. Setting package manager
-(require 'cl)
-(defvar my/packages '(use-package diminish bind-key))
-
-;; Associate my/packages with package-autoremove function in order to uninstall packages
-(setq package-selected-packages my/packages)
-
-;; Implement of packages autoinstall
-(defun my/packages-installed-p ()
-  "Implement of packages autoinstall."
-  (loop for pkg in my/packages
-	when (not (package-installed-p pkg)) do (return nil)
-	finally (return t)))
-
-(unless (my/packages-installed-p)
-  (message "%s" "Refreshing package datpabase...")
-  (package-refresh-contents)
-  (dolist (pkg my/packages)
-    (when (not (package-installed-p pkg))
-      (package-install pkg))))
-
-;; use-package setting
-(eval-when-compile
-  (require 'use-package)
-  (require 'diminish)
-  (require 'bind-key))
+(dolist (package '(use-package diminish))
+  (unless (package-installed-p package)
+    (package-refresh-contents)
+    (package-install package)))
 
 ;; ================================ Built-in Package Setting ==================================
 (use-package hideshow
@@ -46,7 +24,7 @@
   ;; (error Can’t find a suitable init function) " in *Flymake log* buffer
   :config (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake))
 
-;; ================================ 3th-party Package Setting ==================================
+;; ================================ Minimal Third Party Package Setting ==================================
 (use-package diminish
   :commands diminish
   :diminish (eldoc-mode abbrev-mode))
@@ -111,6 +89,42 @@
 	      ("M-x" . counsel-M-x)
 	      ("C-x r" . counsel-recentf)))
 
+(use-package exec-path-from-shell
+  :ensure t
+  :config (exec-path-from-shell-initialize))
+
+(use-package markdown-mode
+  :ensure t
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
+
+(use-package cmake-mode
+  :ensure t)
+
+(use-package json-mode
+  :ensure t)
+
+(use-package yaml-mode
+  :ensure t)
+
+(use-package dockerfile-mode
+  :ensure t
+  :init
+  (add-to-list 'load-path "~/.emacs.d/elpa/dockerfile-mode/")
+  (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
+
+(use-package docker-compose-mode
+  :ensure t)
+
+(use-package protobuf-mode
+  :ensure t)
+
+(use-package graphql-mode
+  :ensure t)
+
+;; ================================ Extra Third Party Package Setting ==================================
 (use-package projectile
   :ensure t
   :commands projectile-mode
@@ -121,34 +135,34 @@
 	      ("s-p" . 'projectile-command-map)
 	      ("C-c p" . 'projectile-command-map)))
 
-(use-package ivy-yasnippet
-  :ensure t)
-
 (use-package yasnippet
   :ensure t
   :pin melpa
   :commands yas-minor-mode
   :diminish yas-minor-mode
   :hook ((c-mode c++-mode python-mode asm-mode sh-mode go-mode) . yas-minor-mode)
-  :config (yas-reload-all)
+  ;; :config (yas-reload-all)
   :bind (:map yas-minor-mode-map
 	      ("C-c & y" . 'ivy-yasnippet)))
 
 (use-package yasnippet-snippets
   :ensure t)
 
+(use-package ivy-yasnippet
+  :ensure t)
+
 (use-package magit
   :ensure t
   :config (setq magit-view-git-manual-method 'man))
 
-(use-package exec-path-from-shell
+(use-package google-c-style
   :ensure t
-  :config (exec-path-from-shell-initialize))
+  :hook ((c-mode c++-mode) . google-set-c-style))
 
 (use-package lsp-mode
   :ensure t
   :commands lsp
-  :hook ((sh-mode go-mode) . lsp-deferred))
+  :hook ((sh-mode go-mode python-mode) . lsp-deferred))
 
 (use-package lsp-ui
   :ensure t
@@ -179,10 +193,6 @@
   (setq ccls-sem-highlight-method 'font-lock) ;; enable semantic highlighting
   :hook ((c-mode c++-mode) . (lambda () (require 'ccls) (lsp))))
 
-(use-package google-c-style
-  :ensure t
-  :hook ((c-mode c++-mode) . google-set-c-style))
-
 (use-package go-mode
   :ensure t
   :init
@@ -191,30 +201,10 @@
 			    (add-hook 'before-save-hook #'lsp-organize-imports t t)
 			    (lsp-register-custom-settings '(("gopls.completeUnimported" t t) ("gopls.staticcheck" t t))))))
 
-(use-package dockerfile-mode
+(use-package php-mode
   :ensure t
-  :init
-  (add-to-list 'load-path "~/.emacs.d/elpa/dockerfile-mode/")
-  (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
-
-(use-package docker-compose-mode
-  :ensure t)
-
-(use-package markdown-mode
-  :ensure t
-  :mode (("README\\.md\\'" . gfm-mode)
-         ("\\.md\\'" . markdown-mode)
-         ("\\.markdown\\'" . markdown-mode))
-  :init (setq markdown-command "multimarkdown"))
-
-(use-package cmake-mode
-  :ensure t)
-
-(use-package json-mode
-  :ensure t)
-
-(use-package yaml-mode
-  :ensure t)
+  :mode
+  ("\\.php\\'" . php-mode))
 
 (provide 'init-packages)
 ;;; init-packages.el ends here

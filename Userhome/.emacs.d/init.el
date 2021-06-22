@@ -30,6 +30,7 @@
  '(inhibit-startup-screen t)
  '(mouse-wheel-progressive-speed nil)
  '(package-selected-packages (quote (ivy-yasnippet use-package diminish bind-key)))
+ '(recentf-auto-cleanup 'never)
  '(recentf-mode t)
  '(scroll-bar-mode nil)
  '(show-paren-mode t)

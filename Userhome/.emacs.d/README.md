@@ -14,43 +14,45 @@ This repository contain my emacs setting in ~/.emacs.d
 - ivy
 - swiper
 - counsel
+- exec-path-from-shell
 
 ## Common Programming Package
 - company
 - projectile
 - yasnippet
 - yasnippet-snippets
+- ivy-yasnippet
 - magit
 - lsp-mode
 - lsp-ui
 
-## Specification Programing Package
-
-#### For Shell
-- exec-path-from-shell
+## Language-specific Package
 
 #### For C/C++
 - emacs-ccls
 - google-c-style
 
-#### For PHP
-- php-mode
-
 #### For Golang
 - go-mode
 
+#### For PHP
+- php-mode
+
 #### For DSL
-- dockerfile-mode
-- docker-compose-mode
 - markdown-mode
 - cmake-mode
 - json-mode
 - yaml-mode
+- dockerfile-mode
+- docker-compose-mode
+- protobuf-mode
+- graphql-mode
 
 ## System Denpendency
 - clang
 - ccls
 - gopls
+- python-language-server
 
 ## TODO
 - lsp-treemacs
